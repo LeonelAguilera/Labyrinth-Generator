@@ -12,16 +12,16 @@ end
 if mod(Y,2)==0
     Y=Y+1;
 end
-if show == true
-    screenSize = get(0,'screensize');
-    if Y > X
-        YscreenSize = screenSize(4);
-        XscreenSize = round(YscreenSize*(X/Y));
-    else
-        XscreenSize = screenSize(3);
-        YscreenSize = round(XscreenSize*(Y/X));
-    end
+
+screenSize = get(0,'screensize');
+if Y > X
+    YscreenSize = screenSize(4);
+    XscreenSize = round(YscreenSize*(X/Y));
+else
+    XscreenSize = screenSize(3);
+    YscreenSize = round(XscreenSize*(Y/X));
 end
+
 lab=ones(Y,X,3);
 lab(1,:,:)=zeros(1,X,3);
 lab(Y,:,:)=zeros(1,X,3);
@@ -144,5 +144,7 @@ while laby(salida,X-1)==0
 end
 laby(entrada,1)=1;
 laby(salida,X)=1;
+
 imshow(imresize(laby,[YscreenSize,XscreenSize],'nearest'));
-end
+
+end % !labyrinth
